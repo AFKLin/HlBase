@@ -28,6 +28,7 @@ namespace HL.Ioc.Autofac
                 c.RegisterType(t);
                 //c.Register()
                 //测试git
+                //git测试第二
             });
             return null;
         }
