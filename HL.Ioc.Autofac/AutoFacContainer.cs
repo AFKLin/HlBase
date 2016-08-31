@@ -26,8 +26,10 @@ namespace HL.Ioc.Autofac
             UpdateContainer(c =>
             {
                 c.RegisterType(t);
-                c.Register()
+                //c.Register()
+                //测试git
             });
+            return null;
         }
 
         public IObjectContainer RegisterType(Type t, object instance, string name, LifeStyle lifeStyle)
@@ -67,6 +69,6 @@ namespace HL.Ioc.Autofac
 
     public static class AutoFacContainerExtensions
     {
-        public static IRegistrationBuilder<object, ConcreteReflectionActivatorData, SingleRegistrationStyle> Li
+        //public static IRegistrationBuilder<object, ConcreteReflectionActivatorData, SingleRegistrationStyle> Li
     }
 }
