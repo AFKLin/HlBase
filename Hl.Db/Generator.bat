@@ -1,0 +1,1 @@
+EFTSQLDocumentation.Generator.exe -c "Data Source=192.168.1.26;Initial Catalog=ECS.HOMEI.FAPAI.M;User ID=sa;Password=homei123.;" -i "ECS.HOMEI.edmx"
