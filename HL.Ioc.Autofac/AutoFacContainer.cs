@@ -25,27 +25,56 @@ namespace HL.Ioc.Autofac
         {
             UpdateContainer(c =>
             {
-                c.RegisterType(t);
-                //c.Register()
-                //测试git
-                //git测试第二
+                var reg=c.RegisterType(t).ToLifeStyle(lifeStyle);
+                if (!string.IsNullOrEmpty(name))
+                {
+                    reg.Named(name,t);
+                }
             });
-            return null;
+            return this;
         }
 
         public IObjectContainer RegisterType(Type t, object instance, string name, LifeStyle lifeStyle)
         {
-            throw new NotImplementedException();
+            return RegisterType(t, t, null, lifeStyle);
         }
 
         public IObjectContainer RegisterType(Type from, Type to, string name, LifeStyle lifeStyle)
         {
-            throw new NotImplementedException();
+
+            UpdateContainer(c =>
+            {
+                if (from.IsGenericType&&to.IsGenericTypeDefinition)
+                {
+                    var tempreg=c.RegisterGeneric(to).As(from);
+                    if (!string.IsNullOrEmpty(name))
+                    {
+                        tempreg.Named(name, to);
+                    }
+                }
+                else
+                {
+                    var tempreg = c.RegisterType(to).As(from);
+                    if (!string.IsNullOrEmpty(name))
+                    {
+                        tempreg.Named(name, to);
+                    }
+                }
+            });
+            return this;
         }
 
         public IObjectContainer RegisterType<T>(Func<T> func, string name, LifeStyle lifeStyle)
         {
-            throw new NotImplementedException();
+            UpdateContainer(c =>
+            {
+                var temp = c.Register(e => func()).ToLifeStyle(lifeStyle);
+                if (!string.IsNullOrEmpty(name))
+                {
+                    temp.Named(name, typeof(T));
+                }
+            });
+            return this;
         }
 
 
@@ -59,17 +88,55 @@ namespace HL.Ioc.Autofac
 
         public object Reslove(Type t)
         {
-            throw new NotImplementedException();
+            return LoadScope().Resolve(t);
         }
 
         public object Reslove(Type t, string name)
         {
-            throw new NotImplementedException();
+            return LoadScope().ResolveNamed(name, t);
+        }
+
+        public IEnumerable<object> ResloveAll(Type t)
+        {
+            var type = typeof(IEnumerable<>).MakeGenericType(t);
+            return (IEnumerable<object>)LoadScope().Resolve(type);
+        }
+
+
+        private ILifetimeScope LoadScope()
+        {
+            try
+            {
+                return AutoFacHttpModule.GetLifeScope(_container);
+            }
+            catch (Exception)
+            {
+
+                return _container;
+            }
+        }
+
+        public T Reslove<T>() where T : class
+        {
+            return (T)Reslove(typeof(T));
         }
     }
 
     public static class AutoFacContainerExtensions
     {
-        //public static IRegistrationBuilder<object, ConcreteReflectionActivatorData, SingleRegistrationStyle> Li
+        public static IRegistrationBuilder<TLimit, TActivatorData, TRegistrationStyle> ToLifeStyle<TLimit, TActivatorData, TRegistrationStyle>(this IRegistrationBuilder<TLimit, TActivatorData, TRegistrationStyle> builder,LifeStyle lifestyle)
+        {
+            switch (lifestyle)
+            {
+                case LifeStyle.Singleton:
+                    return builder.SingleInstance();
+                case LifeStyle.Transient:
+                    return builder.InstancePerDependency();
+                case LifeStyle.PreRequest:
+                    return builder.InstancePerLifetimeScope();
+                default:
+                    return null;
+            }
+        }
     }
 }

@@ -17,5 +17,8 @@ namespace HL.Core.Ioc
 
         object Reslove(Type t);
 
+        IEnumerable<object> ResloveAll(Type t);
+
+
     }
 }
