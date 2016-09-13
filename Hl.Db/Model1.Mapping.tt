@@ -1,6 +1,6 @@
 ﻿<#@ template language="C#" debug="false" hostspecific="true"#>
-<#@ include file="lib/EF.Utility.CS.ttinclude"#>
-<#@ assembly name="$(ProJectDir)/lib/Microsoft.Data.Entity.Design.DatabaseGeneration.dll"#>
+<#@ include file="EF6.Utility.CS.ttinclude"#>
+<#@ assembly name="$(ProJectDir)/lib/Microsoft.Data.Entity.Design.DatabaseGeneration2.dll"#>
 <#@ import namespace="Microsoft.Data.Entity.Design.DatabaseGeneration" #>
 <#@ import namespace="System.Text"#>
 <#@ output extension=".cs"#><#

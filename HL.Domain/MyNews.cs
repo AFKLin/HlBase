@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace HL.Domain
 {
-    public class Class1
+    public class MyNews
     {
+        public int Id { get; set; }
+        public string Name { get; set; }
+
+        public int Aget { get; set; }
     }
 }

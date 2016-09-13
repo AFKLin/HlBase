@@ -207,6 +207,28 @@
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HL.Core\HL.Core.csproj">
+      <Project>{2a4e26fd-337d-4fd8-8220-121d42a1d202}</Project>
+      <Name>HL.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HL.Data\HL.Data.csproj">
+      <Project>{1c7eb5c5-2b19-412b-90e9-329242b6478f}</Project>
+      <Name>HL.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HL.Domain\HL.Domain.csproj">
+      <Project>{37440fc4-8812-4ed8-994d-0571ca531bcf}</Project>
+      <Name>HL.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HL.Ioc.Autofac\HL.Ioc.Autofac.csproj">
+      <Project>{b3a5a8ee-2748-478f-8478-1df8d0447996}</Project>
+      <Name>HL.Ioc.Autofac</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HL.WebFramework\HL.WebFramework.csproj">
+      <Project>{68acb76a-eb2f-4c93-af68-a8e506242f3e}</Project>
+      <Name>HL.WebFramework</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
