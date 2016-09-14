@@ -46,7 +46,7 @@ namespace HL.Ioc.Autofac
             {
                 if (from.IsGenericType&&to.IsGenericTypeDefinition)
                 {
-                    var tempreg=c.RegisterGeneric(to).As(from);
+                    var tempreg=c.RegisterGeneric(from).As(to);
                     if (!string.IsNullOrEmpty(name))
                     {
                         tempreg.Named(name, to);
@@ -54,7 +54,7 @@ namespace HL.Ioc.Autofac
                 }
                 else
                 {
-                    var tempreg = c.RegisterType(to).As(from);
+                    var tempreg = c.RegisterType(from).As(to);
                     if (!string.IsNullOrEmpty(name))
                     {
                         tempreg.Named(name, to);

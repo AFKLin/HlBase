@@ -7,6 +7,10 @@ using System.Web.Optimization;
 using System.Web.Routing;
 using HL.Core.Infrastructure;
 using HL.Ioc.Autofac;
+using HL.Core.Ioc;
+using HL.Data;
+using HL.Core;
+using HL.Core.Cache;
 
 namespace HL.Web
 {
@@ -19,7 +23,14 @@ namespace HL.Web
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
-            
+            Bootstrapper.Create()
+                .UseAutoFac()
+                .RegestCustomCommponet(c =>
+                {
+                    c.RegisterType<IDbContext>(() => new EfDbContext("Data Source=.;Initial Catalog=HlBase;User ID=sa;Password=a456852"),null,LifeStyle.PreRequest);
+                    c.RegisterType<IUnitOfWork, UnitOfWork>(LifeStyle.PreRequest);
+                    c.RegisterType<ICacheManager, MemoryCacheManager>(LifeStyle.Singleton);
+                });
 
         }
     }

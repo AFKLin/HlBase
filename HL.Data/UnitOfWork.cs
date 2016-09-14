@@ -16,6 +16,7 @@ namespace HL.Data
         public UnitOfWork(IDbContext dbcontext)
         {
             _dbContext = dbcontext;
+            _repostoryDic = new Dictionary<Type, object>();
             
         }
         public int Commit()

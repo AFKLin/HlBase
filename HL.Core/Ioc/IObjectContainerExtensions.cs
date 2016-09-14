@@ -19,5 +19,18 @@ namespace HL.Core.Ioc
         }
 
 
+        public static IObjectContainer RegisterType<T,F>(this IObjectContainer container,LifeStyle lifestyle)
+        {
+            return container.RegisterType(typeof(F), typeof(T), null,lifestyle);
+        }
+
+        public static IObjectContainer RegisterType<T, F>(this IObjectContainer container, string name,LifeStyle lifestyle)
+        {
+            return container.RegisterType(typeof(F), typeof(T), name, lifestyle);
+        }
+
+
+
+
     }
 }
