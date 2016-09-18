@@ -23,12 +23,14 @@ namespace HL.Web
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
+
             Bootstrapper.Create()
                 .UseAutoFac()
                 .RegestCustomCommponet(c =>
                 {
                     c.RegisterType<IDbContext>(() => new EfDbContext("Data Source=.;Initial Catalog=HlBase;User ID=sa;Password=a456852"),null,LifeStyle.PreRequest);
                     c.RegisterType<IUnitOfWork, UnitOfWork>(LifeStyle.PreRequest);
+                    c.RegisterType<ICacheManager, MemoryCacheManager>(LifeStyle.Singleton);
                     c.RegisterType<ICacheManager, MemoryCacheManager>(LifeStyle.Singleton);
                 });
 
