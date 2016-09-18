@@ -15,6 +15,7 @@ namespace HL.Web.Controllers
         public ActionResult Index()
         {
             return Content("index");
+
         }
 
         public ActionResult About()

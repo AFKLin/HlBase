@@ -17,6 +17,7 @@ namespace HL.Core.Infrastructure
             return result;
         }
 
+
         
         public IObjectContainer Container;
         public void SetContainer(IObjectContainer container)
