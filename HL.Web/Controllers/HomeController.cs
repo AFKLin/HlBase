@@ -14,19 +14,13 @@ namespace HL.Web.Controllers
     {
         public ActionResult Index()
         {
-            var a=Bootstrapper.Current.Container.Reslove<IUnitOfWork>();
-            a.Repostory<MyNews>().Insert(new MyNews()
-            {
-                Name = "123",
-                Aget = 1
-            });
-            a.Commit();
-            return Content("xxxx");
+            
         }
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            
+
 
             return View();
         }

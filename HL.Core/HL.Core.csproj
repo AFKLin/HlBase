@@ -47,6 +47,7 @@
     <Compile Include="Data\IRepository.cs" />
     <Compile Include="Data\IUnitOfWork.cs" />
     <Compile Include="Infrastructure\Bootstrapper.cs" />
+    <Compile Include="Infrastructure\Singleton.cs" />
     <Compile Include="Ioc\IObjectContainer.cs" />
     <Compile Include="Ioc\IObjectContainerExtensions.cs" />
     <Compile Include="Ioc\LifeStyle.cs" />
