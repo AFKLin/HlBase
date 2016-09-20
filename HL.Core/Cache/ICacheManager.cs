@@ -12,6 +12,8 @@ namespace HL.Core.Cache
 
         void Set(string key, object value, int cachetime);
 
+        bool IsSet(string key);
+
         void Remove(string key);
 
         void Clear();

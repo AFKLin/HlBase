@@ -42,10 +42,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cache\ICacheManager.cs" />
+    <Compile Include="Cache\ICacheManagerExtensions.cs" />
     <Compile Include="Cache\MemoryCache.cs" />
     <Compile Include="DataBase\IEntity.cs" />
     <Compile Include="Data\IRepository.cs" />
     <Compile Include="Data\IUnitOfWork.cs" />
+    <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Infrastructure\Bootstrapper.cs" />
     <Compile Include="Infrastructure\Singleton.cs" />
     <Compile Include="Ioc\IObjectContainer.cs" />
