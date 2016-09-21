@@ -7,7 +7,7 @@ using System.Globalization;
 using System.IO;
 using System.Web;
 
-namespace ECS.Extensions
+namespace Hl.Extensions
 {
     public static class StringExtensions
     {
